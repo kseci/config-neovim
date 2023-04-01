@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/dan/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
+  neoformat = {
+    loaded = true,
+    path = "/Users/dan/.local/share/nvim/site/pack/packer/start/neoformat",
+    url = "https://github.com/sbdchd/neoformat"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/dan/.local/share/nvim/site/pack/packer/start/nvim-cmp",

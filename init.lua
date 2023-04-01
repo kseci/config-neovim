@@ -13,6 +13,11 @@ require("dan.plugins.mason-lspconfig")
 require("dan.core.keymaps")
 
 
+-- To use prettier/eslint on save
+vim.api.nvim_command('autocmd BufWritePre *.tsx Neoformat')
+-- Try to find prettier from node_modules
+vim.g.neoformat_try_node_exe = 1
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -23,6 +28,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
 
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
