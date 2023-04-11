@@ -51,6 +51,8 @@ require('packer').startup(function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
+  -- Github copilot
+  use 'github/copilot.vim'
 
   -- Git related plugins
   use 'tpope/vim-fugitive'

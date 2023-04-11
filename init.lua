@@ -13,10 +13,11 @@ require("dan.plugins.mason-lspconfig")
 require("dan.core.keymaps")
 
 
--- To use prettier/eslint on save
 vim.api.nvim_command('autocmd BufWritePre *.tsx Neoformat')
--- Try to find prettier from node_modules
+
 vim.g.neoformat_try_node_exe = 1
+
+vim.g.copilot_node_command = "~/.asdf/shims/node"
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
