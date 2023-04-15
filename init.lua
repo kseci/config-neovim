@@ -10,6 +10,7 @@ require("dan.plugins.bufferline")
 require("dan.plugins.nvim-cmp")
 require("dan.plugins.mason")
 require("dan.plugins.mason-lspconfig")
+require("dan.plugins.copilot")
 require("dan.core.keymaps")
 
 
