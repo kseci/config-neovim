@@ -13,9 +13,9 @@ vim.keymap.set('n', '<C-f>', ':bnext<CR>')
 -- Close current buffer
 vim.keymap.set('n', '<C-w>', ':bd!<CR>')
 -- Move current buffer to the left
-vim.keymap.set('n', '<C-Q>', ':BufferLineMovePrev<CR>')
+vim.keymap.set('n', '<C-Q>', ':BufferLineMovePrev')
 -- Move current buffer to the right
-vim.keymap.set('n', '<C-Q>', ':BufferLineMoveNext<CR>')
+vim.keymap.set('n', '<C-Q>', ':BufferLineMoveNext')
 
 -- Toggle nvim-tree explorer
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
