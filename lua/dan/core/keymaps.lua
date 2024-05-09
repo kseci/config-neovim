@@ -13,10 +13,11 @@ vim.keymap.set('n', '<C-f>', ':bnext<CR>')
 -- Close current buffer
 vim.keymap.set('n', '<C-w>', ':bd!<CR>')
 -- Move current buffer to the left
-vim.keymap.set('n', '<C-Q>', ':BufferLineMovePrev<CR>')
+--vim.keymap.set('n', '<C-Q>', ':BufferLineMovePrev<CR>')
 -- Move current buffer to the right
-vim.keymap.set('n', '<C-E>', ':BufferLineMoveNext<CR>')
+--vim.keymap.set('n', '<C-E>', ':BufferLineMoveNext<CR>')
 
+vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- Toggle nvim-tree explorer
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 
@@ -36,8 +37,14 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>st', require('telescope.builtin').live_grep, { desc = '[S]earch [T]text with Grep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earth [D]iagnostics' })
+vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = '[R]e[n]ame LSP' })
 
+-- Git
 vim.keymap.set('n', '<leader>gb', ':G blame<CR>')
 vim.keymap.set('n', '<leader>gs', ':G status<CR>')
 vim.keymap.set('n', '<leader>gd', ':G diff<CR>')
 vim.keymap.set('n', '<leader>gvd', ':Gvdiffsplit<CR>')
+
+-- Eslint
+vim.keymap.set('n', '<leader>fd', ':lua vim.lsp.buf.format()<CR>', { desc = '[F]ormat [D]ocument LSP' })
+

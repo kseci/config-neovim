@@ -61,6 +61,7 @@ require('packer').startup(function(use)
 
   use 'akinsho/bufferline.nvim' -- Tabs for buffers
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use { "catppuccin/nvim", as = "catppuccin" } -- Colorscheme
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -101,6 +102,7 @@ if is_bootstrap then
   print '=================================='
   return
 end
+
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
