@@ -48,3 +48,6 @@ vim.keymap.set('n', '<leader>gvd', ':Gvdiffsplit<CR>')
 -- Eslint
 vim.keymap.set('n', '<leader>fd', ':lua vim.lsp.buf.format()<CR>', { desc = '[F]ormat [D]ocument LSP' })
 
+-- Center vertically
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen after half screen up' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Center screen after half screen down' })
