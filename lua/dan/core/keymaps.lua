@@ -10,6 +10,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Prev and Next buffers
 vim.keymap.set('n', '<C-a>', ':bprev<CR>')
 vim.keymap.set('n', '<C-f>', ':bnext<CR>')
+-- Remap Ctrl-W to Ctrl-N
+vim.keymap.set('', '<C-n>', '<C-w>')
 -- Close current buffer
 vim.keymap.set('n', '<C-w>', ':bd!<CR>')
 -- Move current buffer to the left
@@ -43,7 +45,12 @@ vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = 
 vim.keymap.set('n', '<leader>gb', ':G blame<CR>')
 vim.keymap.set('n', '<leader>gs', ':G status<CR>')
 vim.keymap.set('n', '<leader>gd', ':G diff<CR>')
-vim.keymap.set('n', '<leader>gvd', ':Gvdiffsplit<CR>')
+vim.keymap.set('n', '<leader>gv', ':Gvdiffsplit!<CR>')
+vim.keymap.set('n', '<leader>gh', '<cmd>diffget //2<CR>')
+vim.keymap.set('n', '<leader>gn', '<cmd>diffget //3<CR>')
+vim.keymap.set('n', '<leader>gg', ':Git<CR>')
+vim.keymap.set('n', '<leader>gt', ':G difftool<CR>')
+vim.keymap.set('n', '<leader>gm', ':G mergetool<CR>')
 
 -- Eslint
 vim.keymap.set('n', '<leader>fd', ':lua vim.lsp.buf.format()<CR>', { desc = '[F]ormat [D]ocument LSP' })
