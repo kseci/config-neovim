@@ -14,7 +14,8 @@ require("dan.plugins.copilot")
 require("dan.core.keymaps")
 
 
-vim.api.nvim_command('autocmd BufWritePre *.tsx Neoformat')
+-- [[ automatically
+-- vim.api.nvim_command('autocmd BufWritePre *.tsx Neoformat')
 
 vim.g.neoformat_try_node_exe = 1
 
