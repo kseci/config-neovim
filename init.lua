@@ -105,7 +105,7 @@ end
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-  tsserver = {},
+  ts_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
