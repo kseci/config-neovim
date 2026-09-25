@@ -6,6 +6,9 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.system { 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path }
   vim.cmd [[packadd packer.nvim]]
 end
+local needs_plugin_install = is_bootstrap or vim.fn.empty(vim.fn.glob(
+  vim.fn.stdpath 'data' .. '/site/pack/packer/start/nvim-treesitter/lua/nvim-treesitter/configs.lua'
+)) > 0
 
 
 require('packer').startup(function(use)
@@ -34,6 +37,7 @@ require('packer').startup(function(use)
 
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
@@ -84,7 +88,7 @@ require('packer').startup(function(use)
     plugins(use)
   end
 
-  if is_bootstrap then
+  if needs_plugin_install then
     require('packer').sync()
   end
 end)
@@ -93,13 +97,13 @@ end)
 -- make sense to execute the rest of the init.lua.
 --
 -- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
+if needs_plugin_install then
   print '=================================='
   print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
+  print '    Wait for Packer to complete,'
   print '       then restart nvim'
   print '=================================='
-  return
+  return true
 end
 
 
@@ -110,3 +114,5 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   group = packer_group,
   pattern = vim.fn.expand '$MYVIMRC',
 })
+
+return false

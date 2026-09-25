@@ -1,6 +1,8 @@
 require("dan.core.options")
+if require("dan.plugins-setup") then
+  return
+end
 require("dan.core.colorscheme")
-require("dan.plugins-setup")
 require("dan.plugins.nvim-treesitter")
 require("dan.plugins.nvim-tree")
 require("dan.plugins.lualine")
@@ -121,21 +123,18 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local lsp_config = require('lspconfig')
 local mason_lspconfig = require 'mason-lspconfig'
 
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers)
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    lsp_config[server_name].setup {
+for server_name, settings in pairs(servers) do
+  vim.lsp.config(server_name, {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
+      settings = settings,
+  })
+end
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
 }
 
 -- Turn on lsp status information
