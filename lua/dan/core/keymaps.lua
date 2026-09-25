@@ -54,6 +54,9 @@ vim.keymap.set('n', '<leader>gm', ':G mergetool<CR>')
 
 -- Eslint
 vim.keymap.set('n', '<leader>fd', ':lua vim.lsp.buf.format()<CR>', { desc = '[F]ormat [D]ocument LSP' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to location list' })
 
 -- Center vertically
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Center screen after half screen up' })
