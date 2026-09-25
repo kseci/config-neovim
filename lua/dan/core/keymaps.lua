@@ -20,6 +20,8 @@ vim.keymap.set('n', '<C-w>', ':bd!<CR>')
 --vim.keymap.set('n', '<C-E>', ':BufferLineMoveNext<CR>')
 
 vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChat<CR>', { desc = 'Open Copilot Chat' })
+vim.keymap.set('n', '<leader>ct', '<cmd>CopilotChatToggle<CR>', { desc = 'Toggle Copilot Chat' })
 -- Toggle nvim-tree explorer
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
 

@@ -56,6 +56,10 @@ require('packer').startup(function(use)
   }
   -- Github copilot
   use 'github/copilot.vim'
+  use {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  }
 
   -- Git related plugins
   use 'tpope/vim-fugitive'

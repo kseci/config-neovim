@@ -17,6 +17,7 @@ require("dan.plugins.mason")
 require("dan.plugins.indent-blankline")
 require("dan.plugins.neoformat")
 require("dan.plugins.copilot")
+require("dan.plugins.copilot-chat")
 
 require("dan.core.lsp")
 require("dan.core.keymaps")
