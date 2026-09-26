@@ -1,5 +1,28 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+require('nvim-treesitter.query_predicates')
+
+local info_string_aliases = {
+  ex = 'elixir',
+  pl = 'perl',
+  sh = 'bash',
+  uxn = 'uxntal',
+  ts = 'typescript',
+}
+
+vim.treesitter.query.add_directive('set-lang-from-info-string!', function(captures, _, bufnr, predicate, metadata)
+  local capture = captures[predicate[2]]
+  local node = type(capture) == 'table' and capture[1] or capture
+  if not node then
+    return
+  end
+
+  local language = vim.treesitter.get_node_text(node, bufnr):lower()
+  metadata['injection.language'] = vim.filetype.match({ filename = 'a.' .. language })
+    or info_string_aliases[language]
+    or language
+end, { force = true, all = false })
+
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim' },

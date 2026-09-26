@@ -54,6 +54,9 @@ vim.keymap.set('n', '<leader>gg', ':Git<CR>')
 vim.keymap.set('n', '<leader>gt', ':G difftool<CR>')
 vim.keymap.set('n', '<leader>gm', ':G mergetool<CR>')
 
+-- Copilot Chat
+vim.keymap.set('v', '<leader>cc', '<cmd>CopilotChat<CR>', { desc = 'Open Copilot Chat' })
+
 -- Eslint
 vim.keymap.set('n', '<leader>fd', ':lua vim.lsp.buf.format()<CR>', { desc = '[F]ormat [D]ocument LSP' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
