@@ -7,7 +7,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 local needs_plugin_install = is_bootstrap or vim.fn.empty(vim.fn.glob(
-  vim.fn.stdpath 'data' .. '/site/pack/packer/start/nvim-treesitter/lua/nvim-treesitter/configs.lua'
+  vim.fn.stdpath 'data' .. '/site/pack/packer/start/nvim-treesitter/lua/nvim-treesitter/init.lua'
 )) > 0
 
 
@@ -37,15 +37,13 @@ require('packer').startup(function(use)
 
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
-    run = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    branch = 'main',
+    run = ':TSUpdate',
   }
 
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
+    branch = 'main',
   }
 
   use {
