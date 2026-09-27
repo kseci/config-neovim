@@ -11,9 +11,13 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set('n', '<C-a>', ':bprev<CR>')
 vim.keymap.set('n', '<C-f>', ':bnext<CR>')
 -- Remap Ctrl-W to Ctrl-N
-vim.keymap.set('', '<C-n>', '<C-w>')
+vim.keymap.set('', '<C-n>', '<C-w>', { remap = false })
+vim.keymap.set('n', '<C-n>', '<C-w>', { remap = false })
+-- Delete conflicting Ctrl-W keymaps causing delays in closing buffer
+vim.keymap.del('n', '<C-w>d')
+vim.keymap.del('n', '<C-w><C-d>')
 -- Close current buffer
-vim.keymap.set('n', '<C-w>', ':bd!<CR>')
+vim.keymap.set('n', '<C-w>', ':bp | bd #<CR>', { silent = true, remap = false })
 -- Move current buffer to the left
 --vim.keymap.set('n', '<C-Q>', ':BufferLineMovePrev<CR>')
 -- Move current buffer to the right
@@ -23,7 +27,20 @@ vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true,
 vim.keymap.set('n', '<leader>cc', '<cmd>CopilotChat<CR>', { desc = 'Open Copilot Chat' })
 vim.keymap.set('n', '<leader>ct', '<cmd>CopilotChatToggle<CR>', { desc = 'Toggle Copilot Chat' })
 -- Toggle nvim-tree explorer
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true, desc = 'Toggle NvimTree Explorer' })
+
+vim.keymap.set('n', '<leader>t', function()
+  -- Get the filetype of the currently active window/buffer
+  local current_ft = vim.bo.filetype
+  
+  if current_ft == "NvimTree" then
+    -- If we are inside the tree, jump back to the previous window
+    vim.cmd("wincmd p")
+  else
+    -- If we are in a file, jump into the tree
+    vim.cmd("NvimTreeFocus")
+  end
+end, { silent = true, desc = "Toggle NvimTree Focus" })
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
