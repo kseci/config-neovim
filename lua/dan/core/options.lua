@@ -46,3 +46,13 @@ vim.o.completeopt = 'menuone,noselect'
 -- cursor line
 vim.o.cursorline = true
 
+-- auto read new files
+vim.o.autoread = true
+
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "FocusGained" }, {
+  callback = function()
+    if vim.o.autoread and vim.fn.getcmdwintype() == "" then
+      vim.cmd("checktime")
+    end
+  end,
+})

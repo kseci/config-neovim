@@ -28,6 +28,17 @@ local function on_attach(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+vim.diagnostic.config({
+  underline = true, -- Enforce error highlighting under the text
+  virtual_text = {
+    spacing = 4,
+    source = "if_many",
+    prefix = "●", -- Custom prefix symbol for errors
+  },
+  severity_sort = true,
+  signs = true,
+})
+
 local servers = {
   ts_ls = {},
   lua_ls = {
